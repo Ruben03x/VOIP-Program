@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="512.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <bottom>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="41.0" prefWidth="800.0" style="-fx-background-color: #a69eb0;" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="fieldMessage" alignment="BOTTOM_LEFT" prefHeight="42.0" prefWidth="378.0" />
+            <Button fx:id="buttonSend" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#handleSend" prefHeight="42.0" prefWidth="69.0" text="Send" textAlignment="CENTER" textFill="#727272">
+               <font>
+                  <Font name="Javanese Text" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#handleCall" prefHeight="42.0" prefWidth="79.0" text="Call" textFill="#727272" />
+            <Button mnemonicParsing="false" onAction="#handleConference" prefHeight="40.0" prefWidth="110.0" text="Join Conference" textFill="#727272" />
+            <Button mnemonicParsing="false" onAction="#handleEnd" prefHeight="42.0" prefWidth="67.0" text="End Call" textFill="#727272" />
+            <Button fx:id="recordButton" mnemonicParsing="false" onAction="#recordVoiceNote" prefHeight="42.0" prefWidth="102.0" text="Record VN" textFill="#727272" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <TabPane fx:id="tabPane" prefHeight="457.0" prefWidth="617.0" style="-fx-background-color: #a69eb0;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="globalTab" text="Global">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="607.0">
+                     <children>
+                        <TextArea fx:id="globalArea" editable="false" focusTraversable="false" layoutX="14.0" layoutY="15.0" prefHeight="355.0" prefWidth="611.0" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="whispersTab" text="Whispers">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="609.0">
+                     <children>
+                        <TextArea fx:id="textWhisper" editable="false" focusTraversable="false" layoutX="14.0" layoutY="15.0" prefHeight="356.0" prefWidth="612.0" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="callTab" text="Calls">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="609.0">
+                     <children>
+                        <TextArea fx:id="textCall" editable="false" focusTraversable="false" layoutX="14.0" layoutY="15.0" prefHeight="356.0" prefWidth="612.0" wrapText="true" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <top>
+      <HBox prefHeight="73.0" prefWidth="800.0" style="-fx-background-color: #a69eb0;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#efeff2" strokeType="OUTSIDE" strokeWidth="0.0" text="VOIP &amp; MESSAGE" textAlignment="CENTER" wrappingWidth="796.15625">
+               <font>
+                  <Font name="Javanese Text" size="32.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+   <right>
+      <VBox prefHeight="386.0" prefWidth="177.0" style="-fx-background-color: #a69eb0;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#efeff2" strokeType="OUTSIDE" strokeWidth="0.0" text="Online users" textAlignment="CENTER" wrappingWidth="176.13671875">
+               <font>
+                  <Font name="Javanese Text" size="19.0" />
+               </font>
+            </Text>
+            <ListView fx:id="userListView" onMouseClicked="#displayWhisperMessages" prefHeight="370.0" prefWidth="195.0" />
+            <VBox prefHeight="386.0" prefWidth="177.0" style="-fx-background-color: #a69eb0;">
+               <children>
+                  <Text fill="#efeff2" strokeType="OUTSIDE" strokeWidth="0.0" text="Received Voicenotes" textAlignment="CENTER" wrappingWidth="176.13671875">
+                     <font>
+                        <Font name="Javanese Text" size="19.0" />
+                     </font>
+                  </Text>
+                  <ListView fx:id="vnListView" prefHeight="370.0" prefWidth="195.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
